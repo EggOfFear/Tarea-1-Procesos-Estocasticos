@@ -27,37 +27,3 @@ pip install numpy matplotlib
 ```bash
 python nombre_del_archivo.py
 ```
-
----
-
-## Problema 1 – Dichotomic Markov process
-
-Simulación del proceso dicotómico (Random Telegraph Process). Este proceso alterna entre dos estados (+1 y -1) con tiempos de espera exponencialmente distribuidos.
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-
-gamma = 1.0
-Tmax = 20
-
-t = 0
-y = 1
-
-times = [t]
-states = [y]
-
-while t < Tmax:
-    tau = -np.log(np.random.rand()) / gamma
-    t += tau
-    y = -y
-    
-    times.append(t)
-states.append(y)
-
-plt.step(times, states)
-plt.xlabel("t")
-plt.ylabel("Y(t)")
-plt.title("Random Telegraph Process")
-plt.show()
-```
